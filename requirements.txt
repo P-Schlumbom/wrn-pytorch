@@ -1,0 +1,8 @@
+numpy=1.23.5=py310hd5efca6_0
+tqdm=4.65.0=pypi_0
+torchaudio=0.13.1=py310_cu117
+torchmetrics=0.11.3=pypi_0
+torchvision=0.14.1=py310_cu117
+
+# optional
+# wandb=0.13.10=pypi_0
