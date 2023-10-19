@@ -27,9 +27,9 @@ parser.add_argument("--N", default=4, type=int, help="number of blocks per group
 parser.add_argument("--k", default=10, type=int, help="multiplier for the baseline width of each block; k=1 -> basic "
                                                       "resnet, k>1 -> wide resnet")
 # training args
-parser.add_argument("--batch", default=16, type=int, help="batch size")
-parser.add_argument("--epochs", default=10, type=int, help="maximum epochs")
-parser.add_argument("--lr", default=1e-5, type=float, help="learning rate")
+parser.add_argument("--batch", default=128, type=int, help="batch size")
+parser.add_argument("--epochs", default=200, type=int, help="maximum epochs")
+parser.add_argument("--lr", default=0.1, type=float, help="learning rate")
 parser.add_argument("--lr_schedule", default="60-120-160", type=str, help="set the schedule for when the learning "
                                                                              "rate should be dropped (SGD only). "
                                                                              "Format is '-' delimited epoch, e.g. "
@@ -180,7 +180,7 @@ if __name__ == "__main__":
     optimizer = optim.SGD(
         model.parameters(),
         nesterov=True,
-        lr=0.1,
+        lr=args.lr,
         momentum=0.9,
         weight_decay=5e-4
     )
