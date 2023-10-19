@@ -158,6 +158,9 @@ if __name__ == "__main__":
     configs = vars(args)
     configs['model_type'] = 'custom'
 
+    if configs['mode'] != 'disabled':
+        USE_WANDB = True
+
     if USE_WANDB:
         wandb_functions.wandb_init(configs, project="WRN-demo", mode=args.mode)
 
