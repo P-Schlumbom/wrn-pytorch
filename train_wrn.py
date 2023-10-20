@@ -14,6 +14,7 @@ import argparse
 from architectures.blocks import ModernBasicBlock
 from architectures.wide_resnet import WideResNet
 from helpers.utils import running_average
+from helpers import wandb_functions
 
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
@@ -191,7 +192,7 @@ if __name__ == "__main__":
     print(f"Dropping learning rates at epoch milestones: {schedule}")
     scheduler = MultiStepLR(optimizer, milestones=schedule, gamma=0.2)
 
-    train(args, model, optimizer, scheduler, trainloader, testloader)
+    train(args, model, optimizer, trainloader, testloader, scheduler=scheduler)
 
     if USE_WANDB:
         wandb_functions.wandb_finish()
